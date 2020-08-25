@@ -10,6 +10,7 @@ import {
 	useCheckout,
 	useCartTotals,
 } from '../context/StoreContext';
+import EmptyCart from '../components/emptyCart';
 
 interface CartPageProps {}
 
@@ -19,7 +20,9 @@ const CartPage: React.FC<CartPageProps> = () => {
 
 	const checkout = useCheckout();
 
-	return (
+	return lineItems.length < 1 ? (
+		<EmptyCart />
+	) : (
 		<Layout>
 			<Head title="Cart" />
 			<Container className="my-5">

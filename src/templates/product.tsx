@@ -24,19 +24,36 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
 		<Layout>
 			<Container className={productStyles.container}>
 				<Row>
-					<Col md={6}>
+					<Col lg={7} className="mb-3">
 						<Img
-							fixed={
+							fluid={
 								data.shopifyProduct.variants[0].image.localFile.childImageSharp
-									.fixed
+									.fluid
 							}
 						/>
 					</Col>
-					<Col md={6}>
-						<h1>{data.shopifyProduct.title}</h1>
-
-						<p>{data.shopifyProduct.descriptionHtml}</p>
-						<Button onClick={handleAddToCart}>Add to Cart</Button>
+					<Col lg={5}>
+						<h1 className={productStyles.title}>{data.shopifyProduct.title}</h1>
+						<div className="mb-5">${data.shopifyProduct.variants[0].price}</div>
+						<Button
+							onClick={handleAddToCart}
+							block
+							variant="outline-secondary"
+							style={{
+								fontWeight: 200,
+								borderRadius: 0,
+							}}
+						>
+							Add to Cart
+						</Button>
+						<hr />
+						<p className={productStyles.descriptionHeader}>
+							PRODUCT DESCRIPTION
+						</p>
+						<p className={productStyles.description}>
+							{data.shopifyProduct.description}
+						</p>
+						<hr />
 					</Col>
 				</Row>
 			</Container>
@@ -51,12 +68,9 @@ export const ProductPageQuery = graphql`
 		shopifyProduct(id: { eq: $productId }) {
 			id
 			title
-			descriptionHtml
-			options {
-				name
-				values
-			}
+			description
 			variants {
+				price
 				shopifyId
 				selectedOptions {
 					name
@@ -65,8 +79,8 @@ export const ProductPageQuery = graphql`
 				image {
 					localFile {
 						childImageSharp {
-							fixed(width: 250, height: 250) {
-								...GatsbyImageSharpFixed
+							fluid(maxWidth: 2400) {
+								...GatsbyImageSharpFluid
 							}
 						}
 					}

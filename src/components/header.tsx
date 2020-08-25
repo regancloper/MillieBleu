@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import Img from 'gatsby-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { useCartCount } from '../context/StoreContext';
+import { ShoppingCartOutlined } from '@material-ui/icons';
+import Badge from '@material-ui/core/Badge';
 
+import { useCartCount } from '../context/StoreContext';
 import headerStyles from './header.module.scss';
 
 interface HeaderProps {}
@@ -71,16 +71,13 @@ const Header: React.FC<HeaderProps> = () => {
 					</Nav>
 					<Nav>
 						<Link to="/cart">
-							<Button
-								className="badge-pill border-0 px-3"
-								style={{ backgroundColor: '#6b8bbb', fontWeight: 100 }}
+							<Badge
+								// badgeContent={count}
+								color="primary"
+								variant={count > 0 ? 'dot' : 'standard'}
 							>
-								{/* <FontAwesomeIcon icon={faShoppingCart} />{' '} */}
-								Cart{' '}
-								<Badge pill variant="light">
-									{count}
-								</Badge>
-							</Button>
+								<ShoppingCartOutlined style={{ color: '#6b8bbb' }} />
+							</Badge>
 						</Link>
 					</Nav>
 				</Navbar.Collapse>
