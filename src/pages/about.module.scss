@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+
+.picture {
+	width: 100%;
+	height: 85vh;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pictureText {
+	font-family: 'Libre Caslon Display', serif;
+	font-size: 6rem;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.text {
+	font-weight: 300;
+	color: rgba(0, 0, 0, 0.7);
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}

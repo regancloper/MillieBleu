@@ -1,0 +1,32 @@
+.header {
+	font-weight: 200;
+	color: #6b8bbb;
+}
+
+.titleText {
+	text-align: center;
+	font-weight: 200;
+}
+
+.card {
+	box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.175);
+	border-radius: 0;
+	border-color: #f8f9fa;
+	margin-bottom: 2em;
+	height: 95%;
+}
+
+.card:hover {
+	// box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+.link {
+	color: #6b8bbb;
+	font-weight: 200;
+	font-size: 1rem;
+}
+
+.link:hover {
+	text-decoration: none;
+}

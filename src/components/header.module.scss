@@ -1,0 +1,27 @@
+.navItem {
+	color: #6b8bbb;
+	font-weight: 200;
+	font-size: 1rem;
+	margin-right: 2em;
+	vertical-align: baseline;
+}
+
+.navItem:hover {
+	text-decoration: none;
+	color: #666666;
+}
+
+.activeNavItem {
+	color: #333333;
+}
+
+.brand {
+	font-size: 1.8rem;
+	color: black;
+	text-decoration: none;
+}
+
+.brand:hover {
+	text-decoration: none;
+	color: black;
+}

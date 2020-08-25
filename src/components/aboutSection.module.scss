@@ -1,0 +1,33 @@
+.picture {
+	max-height: 70vh;
+}
+
+.text {
+	font-size: 3rem;
+	font-weight: 100;
+	color: #6b8bbbab;
+}
+
+.badge {
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	font-size: 1.2em;
+	background-color: #6b8bbb;
+	border: 1px solid #6b8bbb;
+	font-weight: 200;
+	color: #fff;
+}
+
+.badge:hover {
+	background-color: rgba(255, 255, 255, 0.75);
+	color: #6b8bbb;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.about {
+	text-align: center;
+	margin-top: 9rem;
+	margin-bottom: 9rem;
+}

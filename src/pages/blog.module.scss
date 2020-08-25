@@ -1,0 +1,32 @@
+.header {
+	font-weight: 200;
+	font-size: 2em;
+	color: #6b8bbb;
+	text-align: center;
+}
+
+.card {
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+	margin-bottom: 2em;
+}
+
+.card:hover {
+	cursor: pointer;
+}
+
+.lineClamp {
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.link {
+	color: black;
+	font-weight: 200;
+}
+
+.link:hover {
+	text-decoration: none;
+	color: #666666;
+}

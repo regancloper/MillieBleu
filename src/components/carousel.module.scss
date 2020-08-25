@@ -1,0 +1,33 @@
+.picture {
+	max-height: 80vh;
+	min-height: 50vh;
+}
+
+.badge {
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	font-size: 1.2em;
+	background-color: #fff;
+	font-weight: 200;
+	color: #6b8bbb;
+}
+
+.badge:hover {
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.carouselTag {
+	font-size: 1em;
+	font-weight: 300;
+	margin-top: 1em;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.caption {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	left: 0;
+	right: 0;
+}
