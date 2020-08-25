@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,7 +12,7 @@ interface FeaturedItemsProps {}
 const FeaturedItems: React.FC<FeaturedItemsProps> = () => {
 	const data = useStaticQuery(graphql`
 		query allProducts {
-			allShopifyProduct {
+			allShopifyProduct(sort: { fields: publishedAt, order: ASC }, limit: 4) {
 				nodes {
 					title
 					handle
@@ -44,7 +44,7 @@ const FeaturedItems: React.FC<FeaturedItemsProps> = () => {
 				</div>
 				<Row>
 					{data.allShopifyProduct.nodes.map((product: any) => (
-						<Col key={product.handle} xs={6} md={4} lg={3}>
+						<Col key={product.handle} sm={6} md={4} lg={3}>
 							<Link
 								to={`/product/${product.handle}`}
 								className={featuredStyles.link}
@@ -52,8 +52,9 @@ const FeaturedItems: React.FC<FeaturedItemsProps> = () => {
 								<Card border="light" className={featuredStyles.card}>
 									<Img
 										fluid={product.images[0].localFile.childImageSharp.fluid}
+										className={featuredStyles.picture}
 									/>
-									<Card.Body>
+									<Card.Body className="d-flex flex-column justify-content-center align-items-center">
 										<Card.Title className={featuredStyles.titleText}>
 											{product.title}
 										</Card.Title>

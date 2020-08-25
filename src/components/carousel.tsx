@@ -86,14 +86,15 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 				/>
 
 				<Carousel.Caption>
-					<Link to="/products">
+					<a href="#featured_items">
 						<Badge className={carouselStyles.badge} pill>
 							Featured Items
 						</Badge>
-					</Link>
+					</a>
 					<div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>Our newest additions.</p>
 					</div>
+					<div id="featured_items"></div>
 				</Carousel.Caption>
 			</Carousel.Item>
 		</Carousel>

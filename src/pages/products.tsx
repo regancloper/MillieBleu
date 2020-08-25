@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Card, Row, Col } from 'react-bootstrap';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -32,20 +32,27 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 				<Row>
 					{data.allShopifyProduct.nodes.map(node => (
 						<Col
-							xs={12}
+							// xs={12}
 							sm={6}
 							lg={4}
 							key={node.handle}
-							className="d-flex flex-column align-items-center pt-5"
+							className="my-2"
 						>
-							<Img fixed={node.images[0].localFile.childImageSharp.fixed} />
-							<h3>
-								<Link to={`/product/${node.handle}`}>{node.title}</Link>
-							</h3>
-							<small>
-								${Number(node.priceRange.maxVariantPrice.amount).toFixed(2)}
-							</small>
-							<p>{node.description}</p>
+							<Link
+								to={`/product/${node.handle}`}
+								className={productsStyles.link}
+							>
+								<Card border="0">
+									<Img
+										fluid={node.images[0].localFile.childImageSharp.fluid}
+										className={productsStyles.picture}
+									/>
+									<h3 className={productsStyles.productTitle}>{node.title}</h3>
+									<p>
+										${Number(node.priceRange.maxVariantPrice.amount).toFixed(2)}
+									</p>
+								</Card>
+							</Link>
 						</Col>
 					))}
 				</Row>
@@ -61,13 +68,12 @@ export const query = graphql`
 		allShopifyProduct {
 			nodes {
 				title
-				description
 				handle
 				images {
 					localFile {
 						childImageSharp {
-							fixed(width: 250, height: 250) {
-								...GatsbyImageSharpFixed
+							fluid(maxWidth: 800) {
+								...GatsbyImageSharpFluid
 							}
 						}
 					}
