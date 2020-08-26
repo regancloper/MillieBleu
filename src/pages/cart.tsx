@@ -11,6 +11,7 @@ import {
 	useCartTotals,
 } from '../context/StoreContext';
 import EmptyCart from '../components/emptyCart';
+import cartStyles from './cart.module.scss';
 
 interface CartPageProps {}
 
@@ -26,19 +27,25 @@ const CartPage: React.FC<CartPageProps> = () => {
 		<Layout>
 			<Head title="Cart" />
 			<Container className="my-5">
-				<h2 className="my-3">Your Cart</h2>
-				<Row>
-					<Col>PRODUCT</Col>
+				<h2 className={cartStyles.header}>Your Cart</h2>
+				<Row className={`${cartStyles.descriptionHeader} d-none d-md-flex`}>
+					<Col xs={6}>PRODUCT</Col>
 					<Col className="text-center">QUANTITY</Col>
 					<Col className="text-right">TOTAL</Col>
 				</Row>
 				{lineItems.map(item => (
 					<TicketItem key={item.id} item={item} />
 				))}
-				<hr />
+				<hr style={{ marginTop: 0 }} />
 				<Row>
 					<Col xs={12} md={{ span: 6, offset: 6 }} lg={{ span: 4, offset: 8 }}>
-						<Card style={{ backgroundColor: '#f6f6f6', border: 'none' }}>
+						<Card
+							style={{
+								backgroundColor: '#f6f6f6',
+								border: 'none',
+								borderRadius: 0,
+							}}
+						>
 							<Card.Body>
 								<Card.Title>Cart Summary</Card.Title>
 								<hr />

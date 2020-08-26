@@ -25,8 +25,8 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 	return (
 		<Layout>
 			<Head title="Products" />
-			<Container>
-				<div className="mt-5">
+			<Container className="my-5">
+				<div>
 					<h3 className={productsStyles.header}>Shop Our Collection</h3>
 				</div>
 				<Row>
@@ -65,7 +65,7 @@ export default ProductsPage;
 
 export const query = graphql`
 	query {
-		allShopifyProduct {
+		allShopifyProduct(sort: { fields: publishedAt, order: ASC }) {
 			nodes {
 				title
 				handle

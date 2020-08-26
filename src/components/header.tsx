@@ -70,13 +70,18 @@ const Header: React.FC<HeaderProps> = () => {
 						</Link>
 					</Nav>
 					<Nav>
-						<Link to="/cart">
+						<Link
+							to="/cart"
+							className={headerStyles.navItem}
+							activeClassName={headerStyles.activeNavItem}
+						>
 							<Badge
 								// badgeContent={count}
 								color="primary"
 								variant={count > 0 ? 'dot' : 'standard'}
 							>
-								<ShoppingCartOutlined style={{ color: '#6b8bbb' }} />
+								<ShoppingCartOutlined />
+								{/* style={{ color: '#6b8bbb' }} */}
 							</Badge>
 						</Link>
 					</Nav>

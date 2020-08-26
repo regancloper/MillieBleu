@@ -147,11 +147,16 @@ function useAddItemToCart() {
 		setStore,
 	} = useContext(StoreContext);
 
-	async function addItemToCart(variantId: string, quantity: string) {
+	async function addItemToCart(
+		variantId: string,
+		quantity: string,
+		setLoading: React.Dispatch<React.SetStateAction<boolean>>
+	) {
 		if (variantId === '' || !quantity) {
 			console.error('Both a size and quantity are required.');
 			return;
 		}
+		setLoading(true);
 
 		setStore(prevState => {
 			return { ...prevState, isAdding: true };
@@ -168,6 +173,7 @@ function useAddItemToCart() {
 		setStore(prevState => {
 			return { ...prevState, checkout: newCheckout, isAdding: false };
 		});
+		setLoading(false);
 	}
 
 	return addItemToCart;

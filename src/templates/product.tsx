@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col, Spinner } from 'react-bootstrap';
 
 import Layout from '../components/layout';
 import { useAddItemToCart } from '../context/StoreContext';
@@ -14,10 +14,12 @@ interface ProductTemplateProps {
 }
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
+	const [loading, setLoading] = useState(false);
+
 	const addItemToCart = useAddItemToCart();
 
 	const handleAddToCart = () => {
-		addItemToCart(data.shopifyProduct.variants[0].shopifyId, '1');
+		addItemToCart(data.shopifyProduct.variants[0].shopifyId, '1', setLoading);
 	};
 
 	return (
@@ -35,17 +37,37 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
 					<Col lg={5}>
 						<h1 className={productStyles.title}>{data.shopifyProduct.title}</h1>
 						<div className="mb-5">${data.shopifyProduct.variants[0].price}</div>
-						<Button
-							onClick={handleAddToCart}
-							block
-							variant="outline-secondary"
-							style={{
-								fontWeight: 200,
-								borderRadius: 0,
-							}}
-						>
-							Add to Cart
-						</Button>
+						{loading ? (
+							<Button
+								variant="secondary"
+								disabled
+								block
+								style={{
+									fontWeight: 200,
+									borderRadius: 0,
+								}}
+							>
+								<Spinner
+									as="span"
+									animation="border"
+									size="sm"
+									role="status"
+									aria-hidden="true"
+								/>
+							</Button>
+						) : (
+							<Button
+								onClick={handleAddToCart}
+								block
+								variant="outline-secondary"
+								style={{
+									fontWeight: 200,
+									borderRadius: 0,
+								}}
+							>
+								Add to Cart
+							</Button>
+						)}
 						<hr />
 						<p className={productStyles.descriptionHeader}>
 							PRODUCT DESCRIPTION
