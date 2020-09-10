@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
 	siteMetadata: {
 		title: 'Millie Bleu',
-		description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+		description: `Check out my Millie Bleu online store powered by Shopify.`,
 		author: `Regan Loper`,
 	},
 	plugins: [
@@ -51,6 +51,22 @@ module.exports = {
 				theme_color: `#663399`,
 				display: `minimal-ui`,
 				icon: `src/images/sitelogo.png`, // This path is relative to the root of the site.
+			},
+		},
+		{
+			resolve: `gatsby-plugin-google-fonts`,
+			options: {
+				fonts: [`taviraj\:200,400`],
+				display: 'swap',
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-web-font-loader',
+			options: {
+				custom: {
+					families: ['Copenhagen'],
+					urls: ['/fonts/fonts.css'],
+				},
 			},
 		},
 	],

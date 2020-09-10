@@ -1,6 +1,8 @@
 .header {
 	font-weight: 200;
-	color: #6b8bbb;
+	// color: #6b8bbb;
+	color: #9ab1d4;
+	font-family: 'Taviraj';
 }
 
 .titleText {
@@ -33,4 +35,12 @@
 
 .picture {
 	height: 60%;
+}
+
+.copenhagen {
+	font-size: 4.2em;
+	font-family: 'Copenhagen';
+	margin-top: 0.5em;
+	line-height: 0.1;
+	color: rgba(0, 0, 0, 0.2);
 }

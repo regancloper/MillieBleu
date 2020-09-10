@@ -1,9 +1,11 @@
 .header {
 	font-weight: 200;
 	font-size: 2em;
-	color: #6b8bbb;
+	// color: #6b8bbb;
+	color: #9ab1d4;
 	text-align: center;
 	margin-bottom: 2em;
+	font-family: 'Taviraj';
 }
 
 .link {
@@ -24,4 +26,13 @@
 
 .picture {
 	height: 40vh;
+}
+
+.copenhagen {
+	text-align: center;
+	font-size: 4em;
+	font-family: 'Copenhagen';
+	margin-top: 0.5em;
+	line-height: 0.1;
+	color: rgba(0, 0, 0, 0.2);
 }

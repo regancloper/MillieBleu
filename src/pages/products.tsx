@@ -27,6 +27,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 			<Head title="Products" />
 			<Container className="my-5">
 				<div>
+					<div className={productsStyles.copenhagen}>look around</div>
 					<h3 className={productsStyles.header}>Shop Our Collection</h3>
 				</div>
 				<Row>

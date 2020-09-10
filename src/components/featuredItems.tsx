@@ -39,7 +39,8 @@ const FeaturedItems: React.FC<FeaturedItemsProps> = () => {
 	return (
 		<Container fluid style={{ backgroundColor: '#f1f3f2' }}>
 			<Container className="pb-5">
-				<div className="d-flex justify-content-center align-items-center py-5">
+				<div className="d-flex flex-column justify-content-center align-items-center py-5">
+					<div className={featuredStyles.copenhagen}>What's New</div>
 					<h1 className={featuredStyles.header}>Featured Items</h1>
 				</div>
 				<Row>

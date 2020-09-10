@@ -30,7 +30,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
 		<Layout>
 			<Head title="Blog" />
 			<Container>
-				<div className="my-5">
+				<div className="my-5 text-center">
+					<div className={blogStyles.copenhagen}>learn more</div>
 					<h3 className={blogStyles.header}>Read Our Blog</h3>
 				</div>
 				{data.allShopifyArticle.nodes.map(blog => (

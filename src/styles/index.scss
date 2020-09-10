@@ -1,3 +1,9 @@
 body {
 	margin: 0;
 }
+
+@font-face {
+	font-family: 'Copenhagen';
+	src: url('../../static/fonts/copenhagen/Copenhagen-Regular.woff')
+		format('woff');
+}
