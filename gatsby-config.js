@@ -18,7 +18,7 @@ module.exports = {
 
 				// The storefront access token
 				accessToken: process.env.SHOP_TOKEN,
-				apiVersion: '2020-07',
+				apiVersion: '2020-10',
 			},
 		},
 		{

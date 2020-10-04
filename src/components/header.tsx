@@ -61,13 +61,13 @@ const Header: React.FC<HeaderProps> = () => {
 						>
 							About Us
 						</Link>
-						<Link
+						{/* <Link
 							className={headerStyles.navItem}
 							activeClassName={headerStyles.activeNavItem}
 							to="/reviews"
 						>
 							Reviews
-						</Link>
+						</Link> */}
 					</Nav>
 					<Nav>
 						<Link
