@@ -25,9 +25,9 @@ const Footer: React.FC<FooterProps> = () => {
 								<li>About</li>
 							</Link>
 							<Link className={footerStyles.link} to="/faq">
-								<li>Policies</li>
+								<li>FAQ</li>
 							</Link>
-							<Link className={footerStyles.link} to="/about">
+							<Link className={footerStyles.link} to="/contact">
 								<li>Contact</li>
 							</Link>
 						</ul>
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = () => {
 						</p>
 					</Col>
 				</Row>
-				<p className="mt-5 mb-0">&copy; Millie Bleu, 2020. </p>
+				<p className="mt-5 mb-0">&copy; Millie Bleu LLC, 2020. </p>
 				<p className="text-dark">Built in Birmingham by RL Web Design.</p>
 			</Container>
 		</footer>

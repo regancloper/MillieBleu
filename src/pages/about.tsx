@@ -1,37 +1,21 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
+import { Container } from 'react-bootstrap';
 
 import Layout from '../components/layout';
 import Head from '../components/head';
 import aboutStyles from './about.module.scss';
-import { Container } from 'react-bootstrap';
 
 interface AboutPageProps {}
 
 const AboutPage: React.FC<AboutPageProps> = () => {
-	const imageData = useStaticQuery(graphql`
-		query {
-			aboutImage: file(relativePath: { eq: "office.jpg" }) {
-				childImageSharp {
-					fluid(maxWidth: 2400) {
-						...GatsbyImageSharpFluid
-					}
-				}
-			}
-		}
-	`);
-
 	return (
 		<Layout>
 			<Head title="About" />
-			<BackgroundImage
-				className={aboutStyles.picture}
-				fluid={imageData.aboutImage.childImageSharp.fluid}
-			>
-				<div className={aboutStyles.pictureText}>About Us</div>
-			</BackgroundImage>
 			<Container className={aboutStyles.text}>
+				<div className="my-5 text-center">
+					<div className={aboutStyles.copenhagen}>who we are</div>
+					<h3 className={aboutStyles.header}>About Us</h3>
+				</div>
 				<p>
 					Insert a section here about the business, its mission, and its
 					founders, etc.
