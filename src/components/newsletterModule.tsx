@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 
 interface NewsletterModuleProps {}
 
@@ -7,8 +7,10 @@ const NewsletterModule: React.FC<NewsletterModuleProps> = () => {
 	const [email, setEmail] = useState('');
 	const [showAlert, setShowAlert] = useState(false);
 	const [emailSuccessMessage, setEmailSuccessMessage] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const submitEmail = async (event: React.FormEvent<HTMLFormElement>) => {
+		setLoading(true);
 		event.preventDefault();
 		const body = {
 			email: email,
@@ -32,8 +34,10 @@ const NewsletterModule: React.FC<NewsletterModuleProps> = () => {
 		} catch (e) {
 			setEmailSuccessMessage('Something went wrong.');
 			throw e;
+		} finally {
+			setShowAlert(true);
+			setLoading(false);
 		}
-		setShowAlert(true);
 	};
 
 	return (
@@ -53,13 +57,26 @@ const NewsletterModule: React.FC<NewsletterModuleProps> = () => {
 					style={{ fontWeight: 200, width: '80%' }}
 				/>
 			</div>
+
 			<button
 				type="submit"
 				className="btn btn-secondary mb-2 rounded-0"
-				style={{ fontWeight: 200 }}
+				style={{ fontWeight: 200, width: 160 }}
+				disabled={loading}
 			>
-				Subscribe
+				{loading ? (
+					<Spinner
+						as="span"
+						animation="border"
+						size="sm"
+						role="status"
+						aria-hidden="true"
+					/>
+				) : (
+					'Subscribe'
+				)}
 			</button>
+
 			{showAlert && (
 				<Alert
 					variant="secondary"

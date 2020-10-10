@@ -65,7 +65,7 @@ module.exports = {
 			options: {
 				custom: {
 					families: ['Copenhagen'],
-					urls: ['/fonts/fonts.css'],
+					urls: ['/fonts.css'],
 				},
 			},
 		},
