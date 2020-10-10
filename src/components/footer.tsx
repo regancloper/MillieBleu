@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Container, Row, Col } from 'react-bootstrap';
 
+import NewsletterModule from './newsletterModule';
 import footerStyles from './footer.module.scss';
 
 interface FooterProps {}
@@ -11,14 +12,14 @@ const Footer: React.FC<FooterProps> = () => {
 		<footer className={footerStyles.footer}>
 			<Container>
 				<Row>
-					<Col xs={6} sm={5}>
+					<Col xs={12} md={5}>
 						<div className={footerStyles.topLevel}>MILLIE BLEU</div>
 						<p className={`${footerStyles.lowerLevel} mr-5`}>
 							Here is where you'd put some description about Millie Bleu's
 							products and general mission of the company.
 						</p>
 					</Col>
-					<Col xs={6} sm={1}>
+					<Col xs={12} md={1}>
 						<div className={footerStyles.topLevel}>NAVIGATE</div>
 						<ul className={footerStyles.list}>
 							<Link className={footerStyles.link} to="/about">
@@ -32,12 +33,11 @@ const Footer: React.FC<FooterProps> = () => {
 							</Link>
 						</ul>
 					</Col>
-					<Col xs={6} sm={{ span: 4, offset: 2 }}>
+					<Col xs={12} md={{ span: 4, offset: 2 }}>
 						<div className={footerStyles.topLevel}>NEWSLETTER</div>
-						<p className={footerStyles.lowerLevel}>
-							We're in the process of putting together a newsletter. Thanks for
-							your patience!
-						</p>
+						<div className={footerStyles.lowerLevel}>
+							<NewsletterModule />
+						</div>
 					</Col>
 				</Row>
 				<p className="mt-5 mb-0">&copy; Millie Bleu LLC, 2020. </p>
