@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import NewsletterModule from './newsletterModule';
 import footerStyles from './footer.module.scss';
@@ -40,8 +41,41 @@ const Footer: React.FC<FooterProps> = () => {
 						</div>
 					</Col>
 				</Row>
-				<p className="mt-5 mb-0">&copy; Millie Bleu LLC, 2020. </p>
-				<p className="text-dark">Built in Birmingham by RL Web Design.</p>
+				<Row className="my-4">
+					<Col
+						xs={12}
+						md={8}
+						className="d-flex flex-column justify-content-end my-3"
+					>
+						<div>&copy; Millie Bleu LLC, 2020. </div>
+						<div className="text-dark">
+							Built in Birmingham by RL Web Design.
+						</div>
+					</Col>
+					<Col xs={12} md={4} className="d-flex align-items-center my-3">
+						<a
+							target="_blank"
+							className={footerStyles.fa}
+							href="https://www.facebook.com/shopmilliebleu/"
+						>
+							<FontAwesomeIcon icon={['fab', 'facebook-f']} />
+						</a>
+						<a
+							target="_blank"
+							className={footerStyles.fa}
+							href="https://www.instagram.com/shopmilliebleu/"
+						>
+							<FontAwesomeIcon icon={['fab', 'instagram']} />
+						</a>
+						<a
+							target="_blank"
+							className={footerStyles.fa}
+							href="https://www.pinterest.com/shopmilliebleu/"
+						>
+							<FontAwesomeIcon icon={['fab', 'pinterest']} />
+						</a>
+					</Col>
+				</Row>
 			</Container>
 		</footer>
 	);
