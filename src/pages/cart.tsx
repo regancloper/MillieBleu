@@ -27,7 +27,8 @@ const CartPage: React.FC<CartPageProps> = () => {
 		<Layout>
 			<Head title="Cart" />
 			<Container className="my-5">
-				<h2 className={cartStyles.header}>Your Cart</h2>
+				<div className={cartStyles.copenhagen}>what's in</div>
+				<h3 className={cartStyles.header}>Your Cart</h3>
 				<Row className={`${cartStyles.descriptionHeader} d-none d-md-flex`}>
 					<Col xs={6}>PRODUCT</Col>
 					<Col className="text-center">QUANTITY</Col>
