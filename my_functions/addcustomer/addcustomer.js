@@ -2,7 +2,7 @@ const axios = require('axios');
 require('dotenv').config();
 
 exports.handler = async event => {
-	const API_URL = `https://${process.env.SHOPIFY_STORE_NAME}.myshopify.com/admin/api/2020-10/customers.json`;
+	const API_URL = `https://${process.env.SHOP_NAME}.myshopify.com/admin/api/2020-10/customers.json`;
 	const body = JSON.parse(event.body);
 
 	const customerData = {
