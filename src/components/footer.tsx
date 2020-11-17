@@ -15,9 +15,12 @@ const Footer: React.FC<FooterProps> = () => {
 				<Row>
 					<Col xs={12} md={5}>
 						<div className={footerStyles.topLevel}>MILLIE BLEU</div>
-						<p className={`${footerStyles.lowerLevel} mr-5`}>
-							Here is where you'd put some description about Millie Bleu's
-							products and general mission of the company.
+						<p className={`${footerStyles.lowerLevelLeft} mr-5`}>
+							Millie Bleu is a curated collection of one-of-a-kind antiques,
+							vintage finds, and timeless, new interior items. Inspired by
+							little pops of “bleu,” you are guaranteed to find beautiful,
+							timeless items that deserve second stories and brand new
+							beginnings.
 						</p>
 					</Col>
 					<Col xs={12} md={1}>
@@ -36,7 +39,7 @@ const Footer: React.FC<FooterProps> = () => {
 					</Col>
 					<Col xs={12} md={{ span: 4, offset: 2 }}>
 						<div className={footerStyles.topLevel}>NEWSLETTER</div>
-						<div className={footerStyles.lowerLevel}>
+						<div className={footerStyles.lowerLevelRight}>
 							<NewsletterModule />
 						</div>
 					</Col>
@@ -44,7 +47,7 @@ const Footer: React.FC<FooterProps> = () => {
 				<Row className="my-4">
 					<Col
 						xs={12}
-						md={8}
+						lg={8}
 						className="d-flex flex-column justify-content-end my-3"
 					>
 						<div>&copy; Millie Bleu LLC, 2020. </div>
@@ -52,7 +55,7 @@ const Footer: React.FC<FooterProps> = () => {
 							Built in Birmingham by RL Web Design.
 						</div>
 					</Col>
-					<Col xs={12} md={4} className="d-flex align-items-center my-3">
+					<Col xs={12} lg={4} className="d-flex align-items-center my-3">
 						<a
 							target="_blank"
 							className={footerStyles.fa}

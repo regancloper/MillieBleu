@@ -10,21 +10,21 @@ interface HomePageCarouselProps {}
 const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 	const imageData = useStaticQuery(graphql`
 		query {
-			firstImage: file(relativePath: { eq: "kitchentwo.jpg" }) {
+			firstImage: file(relativePath: { eq: "entry.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
 					}
 				}
 			}
-			secondImage: file(relativePath: { eq: "homeimage.jpg" }) {
+			secondImage: file(relativePath: { eq: "placesetting.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
 					}
 				}
 			}
-			thirdImage: file(relativePath: { eq: "kitchen.jpg" }) {
+			thirdImage: file(relativePath: { eq: "table.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
@@ -53,11 +53,11 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 							Shop
 						</Badge>
 					</Link>
-					<div className="d-none d-sm-block">
+					{/* <div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>
 							Check out our curated collection of antique items for your home.
 						</p>
-					</div>
+					</div> */}
 				</Carousel.Caption>
 			</Carousel.Item>
 			<Carousel.Item>
@@ -72,11 +72,11 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 							Blog
 						</Badge>
 					</Link>
-					<div className="d-none d-sm-block">
+					{/* <div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>
 							Take a look at our blog for some inspiration.
 						</p>
-					</div>
+					</div> */}
 				</Carousel.Caption>
 			</Carousel.Item>
 			<Carousel.Item>
@@ -91,9 +91,9 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 							Featured Items
 						</Badge>
 					</a>
-					<div className="d-none d-sm-block">
+					{/* <div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>Our newest additions.</p>
-					</div>
+					</div> */}
 					<div id="featured_items"></div>
 				</Carousel.Caption>
 			</Carousel.Item>

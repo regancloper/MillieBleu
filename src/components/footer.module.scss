@@ -9,21 +9,30 @@
 
 .topLevel {
 	margin-bottom: 1em;
+	font-size: 1.2em;
 }
 
 .list {
 	list-style: none;
 	padding-left: 0;
-	font-weight: 300;
+	font-weight: 200;
 }
 
-.lowerLevel {
-	font-weight: 300;
+.lowerLevelLeft {
+	font-weight: 200;
+	color: #343a40;
+	text-align: justify;
+}
+
+.lowerLevelRight {
+	font-weight: 200;
+	color: #343a40;
 }
 
 .link {
 	text-decoration: none;
-	color: #fff;
+	// color: #fff;
+	color: #343a40;
 }
 
 .link:hover {
