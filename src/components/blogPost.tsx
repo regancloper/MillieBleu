@@ -15,7 +15,7 @@ interface BlogPostProps {
 const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 	return (
 		<Layout>
-			<div className={blogPostStyles.container}>
+			{/* <div className={blogPostStyles.container}>
 				<Container className="px-lg-5">
 					<div className="py-3 p-lg-5">
 						<Card border="0" style={{ borderRadius: '15px' }}>
@@ -38,32 +38,32 @@ const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 						</Card>
 					</div>
 				</Container>
-			</div>
+			</div> */}
 		</Layout>
 	);
 };
 
 export default BlogPost;
 
-export const BlogPostQuery = graphql`
-	query($articleId: String!) {
-		shopifyArticle(id: { eq: $articleId }) {
-			id
-			title
-			content
-			author {
-				name
-			}
-			image {
-				localFile {
-					childImageSharp {
-						fluid(maxWidth: 2400) {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
-			}
-			publishedAt(formatString: "MMMM DD, YYYY")
-		}
-	}
-`;
+// export const BlogPostQuery = graphql`
+// 	query($articleId: String!) {
+// 		shopifyArticle(id: { eq: $articleId }) {
+// 			id
+// 			title
+// 			content
+// 			author {
+// 				name
+// 			}
+// 			image {
+// 				localFile {
+// 					childImageSharp {
+// 						fluid(maxWidth: 2400) {
+// 							...GatsbyImageSharpFluid
+// 						}
+// 					}
+// 				}
+// 			}
+// 			publishedAt(formatString: "MMMM DD, YYYY")
+// 		}
+// 	}
+// `;

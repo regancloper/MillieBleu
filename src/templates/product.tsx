@@ -15,6 +15,7 @@ interface ProductTemplateProps {
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
 	const [loading, setLoading] = useState(false);
+	const [currentPicture, setCurrentPicture] = useState(0);
 
 	const addItemToCart = useAddItemToCart();
 
@@ -27,12 +28,31 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
 			<Container className={productStyles.container}>
 				<Row>
 					<Col lg={7} className="mb-3">
-						<Img
-							fluid={
-								data.shopifyProduct.variants[0].image.localFile.childImageSharp
-									.fluid
-							}
-						/>
+						<Row>
+							<Col xs={12} className="mb-3">
+								<Img
+									fluid={
+										data.shopifyProduct.images[currentPicture].localFile
+											.childImageSharp.fluid
+									}
+									style={{ maxHeight: 600 }}
+								/>
+							</Col>
+							{data.shopifyProduct.images.map((image: any, index: number) => (
+								<Col
+									xs={2}
+									key={index}
+									onClick={() => setCurrentPicture(index)}
+								>
+									<Img
+										fluid={image.localFile.childImageSharp.fluid}
+										className={`${productStyles.picture} ${
+											currentPicture === index && productStyles.selectedPicture
+										}`}
+									/>
+								</Col>
+							))}
+						</Row>
 					</Col>
 					<Col lg={5}>
 						<h1 className={productStyles.title}>{data.shopifyProduct.title}</h1>
@@ -98,12 +118,12 @@ export const ProductPageQuery = graphql`
 					name
 					value
 				}
-				image {
-					localFile {
-						childImageSharp {
-							fluid(maxWidth: 2400) {
-								...GatsbyImageSharpFluid
-							}
+			}
+			images {
+				localFile {
+					childImageSharp {
+						fluid(maxWidth: 2400) {
+							...GatsbyImageSharpFluid
 						}
 					}
 				}

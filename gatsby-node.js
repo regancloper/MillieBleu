@@ -12,12 +12,6 @@ exports.createPages = async ({ graphql, actions }) => {
 					handle
 				}
 			}
-			allShopifyArticle {
-				nodes {
-					id
-					handle
-				}
-			}
 		}
 	`);
 
@@ -35,13 +29,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	// Iterate over all blog posts and create a new page using a template
 	// The blog post "handle" is generated automatically by Shopify
-	result.data.allShopifyArticle.nodes.forEach(node => {
-		createPage({
-			path: `/blog/${node.handle}`,
-			component: path.resolve(`./src/templates/blogPost.tsx`),
-			context: {
-				articleId: node.id,
-			},
-		});
-	});
+	// result.data.allShopifyArticle.nodes.forEach(node => {
+	// 	createPage({
+	// 		path: `/blog/${node.handle}`,
+	// 		component: path.resolve(`./src/templates/blogPost.tsx`),
+	// 		context: {
+	// 			articleId: node.id,
+	// 		},
+	// 	});
+	// });
 };

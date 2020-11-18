@@ -25,7 +25,7 @@ interface BlogPageProps {
 	};
 }
 
-const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
+const BlogPage: React.FC<BlogPageProps> = () => {
 	return (
 		<Layout>
 			<Head title="Blog" />
@@ -34,7 +34,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
 					<div className={blogStyles.copenhagen}>learn more</div>
 					<h3 className={blogStyles.header}>Read Our Blog</h3>
 				</div>
-				{data.allShopifyArticle.nodes.map(blog => (
+				<div className="text-center my-5">Coming Soon</div>
+				{/* {data.allShopifyArticle.nodes.map(blog => (
 					<Link
 						key={blog.id}
 						to={`/blog/${blog.handle}`}
@@ -61,7 +62,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
 							</Row>
 						</Card>
 					</Link>
-				))}
+				))} */}
 			</Container>
 		</Layout>
 	);
@@ -69,25 +70,25 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
 
 export default BlogPage;
 
-export const query = graphql`
-	query {
-		allShopifyArticle(sort: { fields: publishedAt, order: DESC }) {
-			nodes {
-				id
-				handle
-				content
-				title
-				image {
-					localFile {
-						childImageSharp {
-							fluid(maxHeight: 550) {
-								...GatsbyImageSharpFluid
-							}
-						}
-					}
-				}
-				publishedAt(formatString: "MMMM DD, YYYY")
-			}
-		}
-	}
-`;
+// export const query = graphql`
+// 	query {
+// 		allShopifyArticle(sort: { fields: publishedAt, order: DESC }) {
+// 			nodes {
+// 				id
+// 				handle
+// 				content
+// 				title
+// 				image {
+// 					localFile {
+// 						childImageSharp {
+// 							fluid(maxHeight: 550) {
+// 								...GatsbyImageSharpFluid
+// 							}
+// 						}
+// 					}
+// 				}
+// 				publishedAt(formatString: "MMMM DD, YYYY")
+// 			}
+// 		}
+// 	}
+// `;

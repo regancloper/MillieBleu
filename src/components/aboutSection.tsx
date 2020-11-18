@@ -10,7 +10,7 @@ interface AboutSectionProps {}
 const AboutSection: React.FC<AboutSectionProps> = () => {
 	const imageData = useStaticQuery(graphql`
 		query {
-			blogImage: file(relativePath: { eq: "toa.jpg" }) {
+			blogImage: file(relativePath: { eq: "tealbox.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
