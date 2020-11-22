@@ -24,7 +24,7 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 					}
 				}
 			}
-			thirdImage: file(relativePath: { eq: "table.jpg" }) {
+			thirdImage: file(relativePath: { eq: "bathroom.jpg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
@@ -47,55 +47,53 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 					fluid={imageData.firstImage.childImageSharp.fluid}
 					className={carouselStyles.picture}
 				/>
-				<Carousel.Caption>
+				{/* <Carousel.Caption>
 					<Link to="/products">
 						<Badge className={carouselStyles.badge} pill>
 							Shop
 						</Badge>
 					</Link>
-					{/* <div className="d-none d-sm-block">
+					<div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>
 							Check out our curated collection of antique items for your home.
 						</p>
-					</div> */}
-				</Carousel.Caption>
+					</div>
+				</Carousel.Caption> */}
 			</Carousel.Item>
 			<Carousel.Item>
 				<Img
 					fluid={imageData.secondImage.childImageSharp.fluid}
 					className={carouselStyles.picture}
 				/>
-
-				<Carousel.Caption>
+				{/* <Carousel.Caption>
 					<Link to="/blog">
 						<Badge className={carouselStyles.badge} pill>
 							Blog
 						</Badge>
 					</Link>
-					{/* <div className="d-none d-sm-block">
+					<div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>
 							Take a look at our blog for some inspiration.
 						</p>
-					</div> */}
-				</Carousel.Caption>
+					</div>
+				</Carousel.Caption> */}
 			</Carousel.Item>
 			<Carousel.Item>
 				<Img
 					fluid={imageData.thirdImage.childImageSharp.fluid}
 					className={carouselStyles.picture}
 				/>
-
-				<Carousel.Caption>
+				{/* <Carousel.Caption>
 					<a href="#featured_items">
 						<Badge className={carouselStyles.badge} pill>
 							Featured Items
 						</Badge>
 					</a>
-					{/* <div className="d-none d-sm-block">
+					<div className="d-none d-sm-block">
 						<p className={carouselStyles.carouselTag}>Our newest additions.</p>
-					</div> */}
+					</div>
 					<div id="featured_items"></div>
-				</Carousel.Caption>
+				</Carousel.Caption> */}
 			</Carousel.Item>
 		</Carousel>
 	);

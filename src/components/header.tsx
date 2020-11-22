@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = () => {
 							activeClassName={headerStyles.activeNavItem}
 							to="/products"
 						>
-							Shop All
+							Shop
 						</Link>
 						<Link
 							className={headerStyles.navItem}
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = () => {
 							activeClassName={headerStyles.activeNavItem}
 							to="/about"
 						>
-							About Us
+							About
 						</Link>
 						{/* <Link
 							className={headerStyles.navItem}
