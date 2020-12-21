@@ -95,9 +95,8 @@ const FAQPage: React.FC<FAQPageProps> = () => {
 				<h3 className={faqStyles.title}>Local Pickup in Birmingham, Alabama</h3>
 				<div className="mb-5">
 					<p className={faqStyles.paragraph}>
-						To pick up your order in Birmingham, Alabama, select “BHM Pickup” at
-						checkout. Once your order has been processed, you will receive a
-						confirmation email with pickup instructions.
+						To pick up your order in Birmingham, Alabama, select “Local Pickup”
+						at checkout and follow the pickup instructions.
 					</p>
 				</div>
 			</Container>

@@ -9,13 +9,20 @@ import productsStyles from './products.module.scss';
 
 interface ProductsPageProps {
 	data: {
-		allShopifyProduct: {
+		// allShopifyProduct: {
+		// 	nodes: {
+		// 		title: any;
+		// 		description: any;
+		// 		handle: any;
+		// 		images: any;
+		// 		priceRange: any;
+		// 	}[];
+		// };
+		allShopifyCollection: {
 			nodes: {
-				title: any;
-				description: any;
-				handle: any;
-				images: any;
-				priceRange: any;
+				id: string;
+				handle: string;
+				title: string;
 			}[];
 		};
 	};
@@ -30,7 +37,22 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 					<div className={productsStyles.copenhagen}>look around</div>
 					<h3 className={productsStyles.header}>Shop Our Collection</h3>
 				</div>
-				<Row>
+				<Row className="justify-content-center">
+					{data.allShopifyCollection.nodes.map(node => (
+						<Col
+							// xs={12}
+							sm={6}
+							lg={4}
+							key={node.handle}
+							className="my-2"
+						>
+							<Card border="0">
+								<div className="text-center">{node.title}</div>
+							</Card>
+						</Col>
+					))}
+				</Row>
+				{/* <Row>
 					{data.allShopifyProduct.nodes.map(node => (
 						<Col
 							// xs={12}
@@ -56,7 +78,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 							</Link>
 						</Col>
 					))}
-				</Row>
+				</Row> */}
 			</Container>
 		</Layout>
 	);
@@ -66,26 +88,38 @@ export default ProductsPage;
 
 export const query = graphql`
 	query {
-		allShopifyProduct(sort: { fields: publishedAt, order: ASC }) {
+		allShopifyCollection(filter: { handle: { ne: "frontpage" } }) {
 			nodes {
-				title
+				id
 				handle
-				images {
-					localFile {
-						childImageSharp {
-							fluid(maxWidth: 800) {
-								...GatsbyImageSharpFluid
-							}
-						}
-					}
-				}
-				priceRange {
-					maxVariantPrice {
-						amount
-						currencyCode
-					}
-				}
+				title
 			}
 		}
 	}
 `;
+
+// export const query = graphql`
+// 	query {
+// 		allShopifyProduct(sort: { fields: publishedAt, order: ASC }) {
+// 			nodes {
+// 				title
+// 				handle
+// 				images {
+// 					localFile {
+// 						childImageSharp {
+// 							fluid(maxWidth: 800) {
+// 								...GatsbyImageSharpFluid
+// 							}
+// 						}
+// 					}
+// 				}
+// 				priceRange {
+// 					maxVariantPrice {
+// 						amount
+// 						currencyCode
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `;

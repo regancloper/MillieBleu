@@ -4,10 +4,10 @@ import Head from '../components/head';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { INLINES } from '@contentful/rich-text-types';
 
 import blogStyles from './blog.module.scss';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { INLINES } from '@contentful/rich-text-types';
 
 interface BlogPageProps {
 	data: {
@@ -57,7 +57,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
 										<Card.Title>{blog.title}</Card.Title>
 										<small className="text-muted">{blog.publishDate}</small>
 										<div className={blogStyles.lineClamp}>
-											{renderRichText(blog.content, options)}
+											{documentToReactComponents(blog.content.json, options)}
 										</div>
 									</Card.Body>
 								</Col>
@@ -79,7 +79,7 @@ export const query = graphql`
 				id
 				title
 				content {
-					raw
+					json
 				}
 				image {
 					fluid {

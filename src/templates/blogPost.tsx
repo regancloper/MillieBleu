@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Container, Card, Col, Row } from 'react-bootstrap';
 import Img from 'gatsby-image';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
 
 import Layout from '../components/layout';
 import blogPostStyles from './blogPost.module.scss';
@@ -16,13 +17,25 @@ interface BlogPostProps {
 const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 	const options = {
 		renderNode: {
-			'embedded-asset-block': (node: any) => {
+			[BLOCKS.EMBEDDED_ASSET]: (node: any) => {
 				const alt = node.data.target.fields.title['en-US'];
 				const url = node.data.target.fields.file['en-US'].url;
 				return (
-					<img src={url} alt={alt} width="300px" style={{ borderRadius: 15 }} />
+					<div className="d-flex justify-content-center mb-4">
+						<img
+							src={url}
+							alt={alt}
+							width="300px"
+							style={{ borderRadius: 15 }}
+						/>
+					</div>
 				);
 			},
+			[BLOCKS.PARAGRAPH]: (node: any, children: any) => (
+				<p className="text-justify" style={{ fontWeight: 200 }}>
+					{children}
+				</p>
+			),
 		},
 	};
 
@@ -32,7 +45,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 				<Container className="px-lg-5">
 					<div className="py-3 p-lg-5">
 						<Row className="justify-content-center mb-4">
-							<Col xs={5}>
+							<Col xs={12} md={5}>
 								<Img
 									fluid={data.contentfulBlogPost.image.fluid}
 									className={blogPostStyles.picture}
@@ -47,7 +60,10 @@ const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 									{data.contentfulBlogPost.publishedDate}
 								</p>
 								<div>
-									{renderRichText(data.contentfulBlogPost.content, options)}
+									{documentToReactComponents(
+										data.contentfulBlogPost.content.json,
+										options
+									)}
 								</div>
 								<footer className="blockquote-footer font-italic">
 									{data.contentfulBlogPost.publishDate}
@@ -69,7 +85,7 @@ export const BlogPostQuery = graphql`
 			id
 			title
 			content {
-				raw
+				json
 			}
 			publishDate(formatString: "MMMM DD, YYYY")
 			image {
