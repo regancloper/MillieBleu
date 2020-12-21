@@ -22,6 +22,14 @@ module.exports = {
 			},
 		},
 		{
+			resolve: 'gatsby-source-contentful',
+			options: {
+				spaceId: process.env.CONTENTFUL_SPACE_ID,
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+				forceFullSync: true,
+			},
+		},
+		{
 			// This plugin lets me access environment variables that
 			// aren't prefixed with Gatsby. This allows me to use
 			// Shopify-related variables in the context setup script.

@@ -3,13 +3,19 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 
-	// Query for all products and blog posts in Shopify
+	// Query for all products in Shopify and blog posts in Contentful
 	const result = await graphql(`
 		query {
 			allShopifyProduct(sort: { fields: title }) {
 				nodes {
 					id
 					handle
+				}
+			}
+			allContentfulBlogPost {
+				nodes {
+					id
+					title
 				}
 			}
 		}
@@ -28,14 +34,14 @@ exports.createPages = async ({ graphql, actions }) => {
 	});
 
 	// Iterate over all blog posts and create a new page using a template
-	// The blog post "handle" is generated automatically by Shopify
-	// result.data.allShopifyArticle.nodes.forEach(node => {
-	// 	createPage({
-	// 		path: `/blog/${node.handle}`,
-	// 		component: path.resolve(`./src/templates/blogPost.tsx`),
-	// 		context: {
-	// 			articleId: node.id,
-	// 		},
-	// 	});
-	// });
+	// The blog post title comes from the Contentful blog post
+	result.data.allContentfulBlogPost.nodes.forEach(node => {
+		createPage({
+			path: `/blog/${node.title}`,
+			component: path.resolve(`./src/templates/blogPost.tsx`),
+			context: {
+				articleId: node.id,
+			},
+		});
+	});
 };

@@ -6,26 +6,29 @@ import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import blogStyles from './blog.module.scss';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { INLINES } from '@contentful/rich-text-types';
 
 interface BlogPageProps {
 	data: {
-		allShopifyArticle: {
+		allContentfulBlogPost: {
 			nodes: {
 				id: string;
-				author: {
-					name: string;
-				};
-				handle: string;
-				content: string;
+				content: any;
 				title: string;
 				image: any;
-				publishedAt: string;
+				publishDate: string;
 			}[];
 		};
 	};
 }
 
-const BlogPage: React.FC<BlogPageProps> = () => {
+const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
+	const options = {
+		renderNode: {
+			[INLINES.HYPERLINK]: (node: any) => <span>{node.data.uri}</span>,
+		},
+	};
 	return (
 		<Layout>
 			<Head title="Blog" />
@@ -34,11 +37,10 @@ const BlogPage: React.FC<BlogPageProps> = () => {
 					<div className={blogStyles.copenhagen}>learn more</div>
 					<h3 className={blogStyles.header}>Read Our Blog</h3>
 				</div>
-				<div className="text-center my-5">Coming Soon</div>
-				{/* {data.allShopifyArticle.nodes.map(blog => (
+				{data.allContentfulBlogPost.nodes.map(blog => (
 					<Link
 						key={blog.id}
-						to={`/blog/${blog.handle}`}
+						to={`/blog/${blog.title}`}
 						className={blogStyles.link}
 					>
 						<Card
@@ -48,21 +50,21 @@ const BlogPage: React.FC<BlogPageProps> = () => {
 						>
 							<Row noGutters>
 								<Col lg={4}>
-									<Img fluid={blog.image.localFile.childImageSharp.fluid} />
+									<Img fluid={blog.image.fluid} />
 								</Col>
 								<Col lg={8} className="d-flex align-items-center">
 									<Card.Body>
 										<Card.Title>{blog.title}</Card.Title>
-										<small className="text-muted">{blog.publishedAt}</small>
-										<Card.Text className={blogStyles.lineClamp}>
-											{blog.content}
-										</Card.Text>
+										<small className="text-muted">{blog.publishDate}</small>
+										<div className={blogStyles.lineClamp}>
+											{renderRichText(blog.content, options)}
+										</div>
 									</Card.Body>
 								</Col>
 							</Row>
 						</Card>
 					</Link>
-				))} */}
+				))}
 			</Container>
 		</Layout>
 	);
@@ -70,25 +72,22 @@ const BlogPage: React.FC<BlogPageProps> = () => {
 
 export default BlogPage;
 
-// export const query = graphql`
-// 	query {
-// 		allShopifyArticle(sort: { fields: publishedAt, order: DESC }) {
-// 			nodes {
-// 				id
-// 				handle
-// 				content
-// 				title
-// 				image {
-// 					localFile {
-// 						childImageSharp {
-// 							fluid(maxHeight: 550) {
-// 								...GatsbyImageSharpFluid
-// 							}
-// 						}
-// 					}
-// 				}
-// 				publishedAt(formatString: "MMMM DD, YYYY")
-// 			}
-// 		}
-// 	}
-// `;
+export const query = graphql`
+	query {
+		allContentfulBlogPost(sort: { fields: publishDate, order: DESC }) {
+			nodes {
+				id
+				title
+				content {
+					raw
+				}
+				image {
+					fluid {
+						...GatsbyContentfulFluid
+					}
+				}
+				publishDate(formatString: "MMMM DD, YYYY")
+			}
+		}
+	}
+`;
