@@ -28,6 +28,7 @@ const ReviewPage: React.FC<ReviewPageProps> = () => {
 			<BackgroundImage
 				className={reviewStyles.picture}
 				fluid={imageData.reviewImage.childImageSharp.fluid}
+				backgroundColor={`#040e18`}
 			>
 				<div className={reviewStyles.pictureText}>Reviews</div>
 			</BackgroundImage>

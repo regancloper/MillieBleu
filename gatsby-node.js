@@ -12,6 +12,12 @@ exports.createPages = async ({ graphql, actions }) => {
 					handle
 				}
 			}
+			allShopifyCollection(filter: { handle: { ne: "frontpage" } }) {
+				nodes {
+					id
+					handle
+				}
+			}
 			allContentfulBlogPost {
 				nodes {
 					id
@@ -29,6 +35,18 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve(`./src/templates/product.tsx`),
 			context: {
 				productId: node.id,
+			},
+		});
+	});
+
+	// Iterate over all collections and create a new page using a template
+	// The product "handle" is generated automatically by Shopify
+	result.data.allShopifyCollection.nodes.forEach(node => {
+		createPage({
+			path: `/products/${node.handle}`,
+			component: path.resolve(`./src/templates/collection.tsx`),
+			context: {
+				collectionId: node.id,
 			},
 		});
 	});

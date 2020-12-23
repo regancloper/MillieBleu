@@ -35,7 +35,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ data }) => {
 										data.shopifyProduct.images[currentPicture].localFile
 											.childImageSharp.fluid
 									}
-									style={{ maxHeight: 500 }}
+									// style={{ height: '70vh' }}
 								/>
 							</Col>
 							{data.shopifyProduct.images.map((image: any, index: number) => (
