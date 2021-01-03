@@ -22,12 +22,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 				const url = node.data.target.fields.file['en-US'].url;
 				return (
 					<div className="d-flex justify-content-center mb-4">
-						<img
-							src={url}
-							alt={alt}
-							width="300px"
-							style={{ borderRadius: 15 }}
-						/>
+						<img src={url} alt={alt} className={blogPostStyles.embedPicture} />
 					</div>
 				);
 			},

@@ -40,7 +40,8 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ data }) => {
 						>
 							<Card className={productsStyles.card}>
 								<Card.Title className={productsStyles.cardTitle}>
-									{node.title} Collection
+									{node.title}
+									{/* Collection */}
 								</Card.Title>
 								<BackgroundImage
 									className={productsStyles.cardPicture}

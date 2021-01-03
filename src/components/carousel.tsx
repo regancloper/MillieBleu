@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Carousel, Badge } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import Img from 'gatsby-image';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import carouselStyles from './carousel.module.scss';
 
@@ -24,7 +24,7 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = () => {
 					}
 				}
 			}
-			thirdImage: file(relativePath: { eq: "bathroom.jpg" }) {
+			thirdImage: file(relativePath: { eq: "frames.jpeg" }) {
 				childImageSharp {
 					fluid(maxWidth: 2400) {
 						...GatsbyImageSharpFluid
