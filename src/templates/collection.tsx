@@ -15,6 +15,7 @@ interface CollectionProps {
 			products: {
 				title: string;
 				handle: string;
+				availableForSale: boolean;
 				images: any;
 				priceRange: any;
 			}[];
@@ -34,28 +35,35 @@ const Collection: React.FC<CollectionProps> = ({ data }) => {
 					<h3 className={styles.header}>Collection</h3>
 				</div>
 				<Row>
-					{data.shopifyCollection.products.map(node => (
-						<Col
-							// xs={12}
-							sm={6}
-							lg={4}
-							key={node.handle}
-							className="my-2"
-						>
-							<Link to={`/product/${node.handle}`} className={styles.link}>
-								<Card border="0">
-									<Img
-										fluid={node.images[0].localFile.childImageSharp.fluid}
-										className={styles.picture}
-									/>
-									<h3 className={styles.productTitle}>{node.title}</h3>
-									<p>
-										${Number(node.priceRange.maxVariantPrice.amount).toFixed(2)}
-									</p>
-								</Card>
-							</Link>
-						</Col>
-					))}
+					{data.shopifyCollection.products.map(node => {
+						if (node.availableForSale)
+							return (
+								<Col
+									// xs={12}
+									sm={6}
+									lg={4}
+									key={node.handle}
+									className="my-2"
+								>
+									<Link to={`/product/${node.handle}`} className={styles.link}>
+										<Card border="0">
+											<Img
+												fluid={node.images[0].localFile.childImageSharp.fluid}
+												className={styles.picture}
+											/>
+											<h3 className={styles.productTitle}>{node.title}</h3>
+											<p>
+												$
+												{Number(node.priceRange.maxVariantPrice.amount).toFixed(
+													2
+												)}
+											</p>
+										</Card>
+									</Link>
+								</Col>
+							);
+						return null;
+					})}
 				</Row>
 			</Container>
 		</Layout>
@@ -72,6 +80,7 @@ export const CollectionQuery = graphql`
 			products {
 				title
 				handle
+				availableForSale
 				images {
 					localFile {
 						childImageSharp {
