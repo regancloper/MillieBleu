@@ -92,13 +92,13 @@ const FAQPage: React.FC<FAQPageProps> = () => {
 						provide any additional information.
 					</p>
 				</div>
-				<h3 className={faqStyles.title}>Local Pickup in Birmingham, Alabama</h3>
+				{/* <h3 className={faqStyles.title}>Local Pickup in Birmingham, Alabama</h3>
 				<div className="mb-5">
 					<p className={faqStyles.paragraph}>
 						To pick up your order in Birmingham, Alabama, select “Local Pickup”
 						at checkout and follow the pickup instructions.
 					</p>
-				</div>
+				</div> */}
 			</Container>
 		</Layout>
 	);
