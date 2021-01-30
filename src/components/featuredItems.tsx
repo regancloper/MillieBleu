@@ -12,7 +12,11 @@ interface FeaturedItemsProps {}
 const FeaturedItems: React.FC<FeaturedItemsProps> = () => {
 	const data = useStaticQuery(graphql`
 		query allProducts {
-			allShopifyProduct(sort: { fields: publishedAt, order: DESC }, limit: 4) {
+			allShopifyProduct(
+				sort: { fields: publishedAt, order: DESC }
+				filter: { availableForSale: { eq: true } }
+				limit: 4
+			) {
 				nodes {
 					title
 					handle
